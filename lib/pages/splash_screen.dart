@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stepoutadminapp/pages/loginpage/login_page.dart';
+import 'package:stepoutadminapp/pages/auth.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
   gotoLogIn(context) async {
     await Future.delayed(const Duration(seconds: 2));
     Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (context) => LogInPage(),
+      builder: (context) =>const Auth(),
     ));
   }
 }
