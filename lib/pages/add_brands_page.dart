@@ -84,8 +84,8 @@ class AddBrandPage extends StatelessWidget {
                           if (state.selectedImg != null) {
                             if (formKey.currentState!.validate()) {
                               // db.addData(nameController);
-                              db.addDataToDb(File(state.selectedImg!.path),
-                                  nameController);
+                              db.addBrandDataToDb(File(state.selectedImg!.path),
+                                  nameController.text.trim());
                               state.selectedImg = null;
                               Navigator.pop(context);
                             }

@@ -8,6 +8,7 @@ import 'package:stepoutadminapp/buisnesslogic/productdropdowncubit/product_list_
 import 'package:stepoutadminapp/constants/constant.dart';
 import 'package:stepoutadminapp/constants/constantswdget/constant_container.dart';
 import 'package:stepoutadminapp/constants/constantswdget/constants_button.dart';
+import 'package:stepoutadminapp/functions/dbfun/db_fn.dart';
 
 class AddProductsPage extends StatelessWidget {
   AddProductsPage({super.key});
@@ -206,14 +207,27 @@ class AddProductsPage extends StatelessWidget {
                     ),
                     kheight30,
                     KButton(
+                        onClick: () {
+                          if (formKey.currentState!.validate()) {
+                            DbFunctions().addProductDataToDb(
+                                File(state.selectedImg!.path),
+                                nameController.text.trim(),
+                                amountController.text.trim(),
+                                state.selecteditems.toList(),
+                                state.value,
+                                descriptionController.text.trim());
+                            state.selectedImg = null;
+                            Navigator.pop(context);
+                          }
+                        },
                         label: Center(
                             child: Text(
-                      'Add Product',
-                      style: GoogleFonts.itim(
-                          textStyle: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              fontSize: 25)),
-                    )))
+                          'Add Product',
+                          style: GoogleFonts.itim(
+                              textStyle: TextStyle(
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  fontSize: 25)),
+                        )))
                   ],
                 ),
               );
